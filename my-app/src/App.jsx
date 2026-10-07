@@ -48,7 +48,16 @@ function App() {
   ]
     */}
 
-  const skills = ['HTML', 'CSS', 'JavaScript', 'React', 'PHP', 'MYSQL', 'Python']
+  const [skills, setSkills] = useState([])
+
+    useEffect(() => {
+    fetch('http://localhost:8080/WordPress/wp-json/wp/v2/categories')
+      .then(res => res.json())
+      .then(cats => {
+        const names = cats.map(cat => cat.name)
+        setSkills(names)
+      })
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:8080/WordPress/wp-json/wp/v2/posts?_embed')
