@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
+import { FaDiscord, FaGithub, FaSpotify, FaSteam, FaTelegram, FaUser, FaWhatsapp } from 'react-icons/fa'
 import './App.css'
-import { useState, useEffect } from 'react'
-import { FaGithub, FaTelegram, FaSteam, FaWhatsapp, FaSpotify, FaDiscord, FaUser, FaHome } from 'react-icons/fa'
 
 const socials = [
   { name: 'GitHub', url: 'https://github.com/artem20051205', icon: FaGithub },
@@ -35,7 +35,7 @@ function App() {
   const [skills, setSkills] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8080/WordPress/wp-json/wp/v2/categories')
+    fetch('https://u250444.gluwebsite.nl/wp-json/wp/v2/categories')
       .then(res => res.json())
       .then(cats => {
         const names = cats.map(cat => cat.name)
@@ -44,7 +44,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch('http://localhost:8080/WordPress/wp-json/wp/v2/posts?_embed')
+    fetch('https://u250444.gluwebsite.nl/wp-json/wp/v2/posts?_embed')
       .then(res => res.json())
       .then(posts => {
         const fetchedProjects = posts.map(post => ({
