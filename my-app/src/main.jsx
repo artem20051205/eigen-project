@@ -4,10 +4,18 @@ import './index.css'
 import App from './App.jsx'
 import About from './About.jsx'
 
-const page = window.location.pathname === '/about' ? <About /> : <App />
+const root = createRoot(document.getElementById('root'))
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    {page}
-  </StrictMode>,
-)
+// Hash routing (#/about) so the site also works on GitHub Pages
+function render() {
+  const page = window.location.hash === '#/about' ? <About /> : <App />
+  root.render(
+    <StrictMode>
+      {page}
+    </StrictMode>,
+  )
+  window.scrollTo(0, 0)
+}
+
+window.addEventListener('hashchange', render)
+render()

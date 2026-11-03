@@ -61,7 +61,7 @@ function App() {
   return (
     <main>
       <header>
-        <img src="/me.png" alt="Artem" width="120" className="avatar" />
+        <img src="me.png" alt="Artem" width="120" className="avatar" />
         <h1>Artem</h1>
         <p className="subtitle">Creative software developer</p>
       </header>
@@ -78,7 +78,7 @@ function App() {
 
       <section className="section">
         <div className="section-header">
-          <button className="about-btn" aria-label="About Me" title="About Me" onClick={() => window.location.href = '/about'}>
+          <button className="about-btn" aria-label="About Me" title="About Me" onClick={() => { window.location.hash = '/about' }}>
             <FaUser />
           </button>
           <h2>Projects</h2>
